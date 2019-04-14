@@ -11,9 +11,10 @@
 	padding: 10px;
 	border-radius: 10px;
 	opacity: 1; 
+	transition: all 0.2s;
 }
 .user:hover {
-	scale: 0.5;
+	transform: scale(1.1);
 	opacity: 0.8; 
 	filter: drop-shadow(10px 10px 10px rgba(0,0,0,0.9));
 }
@@ -25,7 +26,11 @@
 	border-radius: 10px;
 	outline: none;
 	user-select: none;
+	text-align: center;
 	/*opacity: 1;*/
+}
+#create-user:hover {
+	transform: ;
 }
 
 .user_remove {
@@ -37,7 +42,9 @@
 	cursor: pointer;
 	user-select: none;
 	outline: none;
-
+}
+.user_remove:hover,.save-button:hover {
+	filter: invert(100);
 }
 .save-button {
 	border-radius: 5px;
@@ -48,4 +55,8 @@
 #create-user, .load-users {
 	font-size: 14px;
 	flex-basis: 50%;
+	margin-left: 52%;
+}
+button {
+	background-color: beige;
 }

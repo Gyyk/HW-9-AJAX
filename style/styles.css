@@ -1,0 +1,24 @@
+.container {
+	display: flex;
+	flex-direction: column;
+
+}
+.user {
+	flex-basis: 100px;
+	background-color: grey;
+	width: 200px;
+	margin: 5px;
+	padding: 10px;
+}
+
+.user_remove {
+	position: relative;
+	top: -105px;
+	right: -180px;
+	background: none;
+	border: none;
+	cursor: pointer;
+	user-select: none;
+	outline: none;
+
+}

@@ -35,16 +35,17 @@ const renderUsers = function () {
 		const userEl = document.createElement ("div");
 		userEl.classList.add ("user");
 		userEl.innerHTML = `
-		<h4><input id="new-name"placeholder= "${item.name}"></h4> 
-		<h5><input id="new-age" placeholder= "${item.age}"></h5>
-		`;
+		<h4><input style ='font-size: 14px; text-align: center; outline: none; border-radius: 5px' class="nameN${item.id}" type="text" value="${item.name}"></h4> 
+		<h5><input style ='font-size: 14px; text-align: center; outline: none; border-radius: 5px' class="ageN${item.id}" type="number" value="${item.age}"></h5>
+		`;	
 		const deleteBtn = document.createElement("button")
-		deleteBtn.textContent = "X";
-		deleteBtn.classList.add("user_remove");
+		// deleteBtn.textContent = "";
+		deleteBtn.classList.add("user_remove", "fas", "fa-times-circle");
 		deleteBtn.addEventListener("click", () => deleteUser(item.id, userEl));
 		const saveChangesBtn = document.createElement("button");
+		saveChangesBtn.classList.add("save-button");
 		saveChangesBtn.textContent = "Save changes";
-		saveChangesBtn.addEventListener("click", () =>saveChanges(item.id));
+		saveChangesBtn.addEventListener("click", () => saveChanges(item.id));
 		userEl.append(deleteBtn);
 		userEl.append(saveChangesBtn);
 		container.append(userEl);
@@ -58,22 +59,22 @@ const loadUsers = async () => {
 }
 
 const saveChanges = (updUserId) => {
-	const newName = document.querySelector("#new-name").value;
-	const newAge = document.querySelector ("#new-age").value;
-	console.log(updUserId);
-	if (newName && newAge !== null) {	
+	this.newName = document.querySelector(".nameN"+updUserId).value;
+	this.newAge = document.querySelector (".ageN"+updUserId).value;
+
+	if (this.newName && this.newAge !== null) {	
 	fetch("https://test-users-api.herokuapp.com/users/"+updUserId, {
         method: "PUT",
         body: JSON.stringify({
-            name: newName,
-            age: newAge
+            name: this.newName,
+            age: this.newAge
         }),
 		headers: {
 	    	Accept: 'application/json',
 	    	'Content-Type': 'application/json',
 	  	}
-    }).then(res=> res)
-	} else(alert("Enter both name and age, please!"))
+    }).then(res => res)
+	} else if(name && age == null) {alert("Enter both name and age, please!")}
 }
 
 const createUser = () => {
